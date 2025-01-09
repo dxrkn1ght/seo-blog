@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="page-container">
+    <div class="content-wrap">
+        {# HEADER #}
+       {% include 'includes/header.html' %}
+
+        {# NAVBAR #}
+        {% include 'includes/navbar.html' %}
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    {# FOOTER #}
+    {% include 'includes/footer.html' %}
+
+    <button id="mode-toggle">Tungi rejim</button>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
+

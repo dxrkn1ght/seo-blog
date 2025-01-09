@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }} - Zamonaviy Dasturchi{% endblock %}
+
+{% block content %}
+    <article class="post-content">
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image">
+        <div class="post-meta">
+            <span>Muallif: {{ post.author.name }}</span>
+            <span>Sana: {{ post.created_at }}</span>
+        </div>
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.long_content }}</p>
+    </article>
+
+    <section class="comments">
+        <h2>Izohlar</h2>
+        {% for comment in post.comments.all %}
+            <div class="comment">
+                <h3>{{ comment.name }}</h3>
+                <p>{{ comment.comment }}</p>
+                <small>{{ comment.created }}</small>
+            </div>
+        {% empty %}
+            <p>Hozircha izohlar mavjud emas.</p>
+        {% endfor %}
+    </section>
+
+    <section class="comment-form-section">
+        <h3>Izoh qoldirish</h3>
+        <form action="{% url 'articles:post_comment' post.id %}" method="post">
+             {{ form.as_p }}
+             {% csrf_token %}
+         <p><input type="submit" value="Izoh qo`shish"></p>
+        </form>
+    </section>
+
+    <h2>O'xshash Maqolalar</h2>
+    <section class="related-posts">
+        {% for related_post in related_posts %}
+            <div class="related-post">
+                <img src="{{ related_post.image.url }}" alt="{{ related_post.title }}">
+                <h3>{{ related_post.title }}</h3>
+            </div>
+        {% endfor %}
+    </section>
+
+{% endblock %}

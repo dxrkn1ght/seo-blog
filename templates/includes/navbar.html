@@ -1,0 +1,9 @@
+<nav>
+    <a href="{% url 'home' %}">Asosiy</a>
+    <a href="{% url 'articles:category' category='web developing' %}">Web Dasturlash</a>
+    <a href="{% url 'articles:category' category='mobile developing' %}">Mobil Dasturlash</a>
+    <a href="{% url 'articles:category' category='ai ml' %}">AI va ML</a>
+    <a href="{% url 'articles:category' category='life of programmers' %}">Dasturchilar hayoti</a>
+    <a href="{% url 'articles:create-author' %}">Yangi Muallif Qo'shish</a>
+    <a href="{% url 'articles:create-post' %}">Yangi Maqola Qo'shish</a>
+</nav>

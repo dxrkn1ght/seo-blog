@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ category|title }} - Zamonaviy Dasturchi{% endblock %}
+
+{% block content %}
+    <h1>{{ category|title }} Maqolalar</h1>
+
+    {% if posts %}
+        <div class="category-posts">
+            {% for post in posts %}
+                <article class="post">
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image" width="500" height="300">
+                    <h2>{{ post.title }}</h2>
+                    <p>{{ post.short_content }}</p>
+                    <a href="{{ post.get_detail_url }}" class="read-more">Batafsil o'qish</a>
+                </article>
+            {% empty %}
+                <h3>Hozircha maqola yo`q</h3>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Bu kategoriyada hech qanday maqola mavjud emas.</p>
+    {% endif %}
+{% endblock %}
